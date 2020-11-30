@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Kim Seong Wook</title>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script src="js/aframe-master.js"></script>
+        <script src="js/unpkg-event-set.js"></script>
+        <script src="js/unpkg-layout.js"></script>
+        <script src="js/unpkg-template.js"></script>
+        <script src="js/unpkg-proxy-event.js"></script>
+        <script src="js/rawgit-cursor.js"></script>
+        <script src="js/unpkg-animation.js"></script>
+        <script src="js/AVideoPlayer.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/aframe-mouse-cursor-component.min.js"></script>
+        <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <script id="link1" type="text/html">
+        <a-entity class="link"    
+        geometry="primitive: plane; height: 0.4; width: 2;"
+        material="shader: flat; src: ${thumb}; transparent: true; opacity: 0.3"
+        event-set__mouseenter="scale: 1 1 1"
+        event-set__mouseleave="scale: 1 1 1"
+        event-set__click="_target: #image-360; _delay: 1000; material.src: ${src}"
+        proxy-event="event: click; to: #image-360; as: fade"></a-entity>
+        </script>
+        
+        <script id="link2" type="text/html">
+        <a-entity class="link"    
+        geometry="primitive: plane; height: 5; width: 7;"
+        material="shader: flat; src: ${thumb}; transparent: true; opacity: 0.1"
+        event-set__mouseenter="scale: 1 1 1"
+        event-set__mouseleave="scale: 1 1 1"
+        event-set__click="_target: #image-360; _delay: 1000; material.src: ${src}"
+        proxy-event="event: click; to: #image-360; as: fade"></a-entity>
+        </script>
+        
+        <script id="link3" type="text/html">
+        <a-entity class="link"    
+        geometry="primitive: plane; height: 0.2; width: 0.2;"
+        material="shader: flat; src: ${thumb}; transparent: true; opacity: 0.99"
+        event-set__mouseenter="scale: 1 1 1"
+        event-set__mouseleave="scale: 1 1 1"
+        event-set__click="_target: #image-360; _delay: 1000; material.src: ${src}"
+        proxy-event="event: click; to: #image-360; as: fade"
+        sound="on: click; src: #click-sound1"></a-entity>
+        </script>
+        
+    </head>
+    
+    <body>
+        <a-scene>
+            <!-- 카메라/커서 -->
+            <a-entity position="-0.8 -1.6 -2.3">
+               <a-camera id="cam">
+                <a-cursor
+                  id="cursor"
+                  animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+                  animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+                  event-set__mouseenter="_event: mouseenter; color: white"
+                  event-set__mouseleave="_event: mouseleave; color: white"
+                  raycaster="objects: .link"></a-cursor>
+               </a-camera>
+            </a-entity>
+            <!-- 카메라/커서 -->
+           
+            <a-assets>
+                <img id="main-panorama" src="img/main1.png">
+                
+                <img id="pannel" crossorigin="anonymous" img src="img/remote2.png">
+                <img id="pannel2" crossorigin="anonymous" img src="img/pannel2.png">
+                
+                <img id="about" crossorigin="anonymous" img src="img/about.png">
+                <img id="Minecraft" crossorigin="anonymous" img src="img/minecraft.png">
+                <img id="yollu" crossorigin="anonymous" img src="img/yollu.png">
+                <img id="adobe" crossorigin="anonymous" img src="img/adobe.png">
+                <img id="5tofu" crossorigin="anonymous" img src="img/5tofu.png">
+                <img id="subway" crossorigin="anonymous" img src="img/subway.png">
+                
+                <audio id="click-sound1" crossorigin="anonymous" src="Audio/action.wav"></audio>
+
+            </a-assets>
+            
+            <a-entity id="links" position="-2.5 -1.1 -2.2" rotation="-20 90 0">
+            <a-entity template="src: #link1" data-src="#pannel" data-thumb="#pannel"></a-entity>
+            </a-entity>
+            
+            <a-entity id="links" position="-7 0 -1.95" rotation="-10 90 0">
+            <a-entity template="src: #link2" data-src="#pannel" data-thumb="#pannel2"></a-entity>
+            </a-entity>
+
+           <a-entity id="links" position="-3.7 0 3.9" rotation="-10 150 0">
+            <a-entity template="src: #link2" data-src="#pannel" data-thumb="#pannel2"></a-entity>
+            </a-entity>
+            
+            <a-entity id="links" layout="type: line; margin: 0.29" position="-2.35 -1 -1.5" rotation="-20 90 0">
+                <a-entity template="src: #link3" data-src="#button" data-thumb="#about"></a-entity>
+                <a-entity template="src: #link3" data-src="#button" data-thumb="#5tofu"></a-entity>
+                <a-entity template="src: #link3" data-src="#button" data-thumb="#adobe"></a-entity>
+                <a-entity template="src: #link3" data-src="#button" data-thumb="#Minecraft"></a-entity>
+                <a-entity template="src: #link3" data-src="#button" data-thumb="#yollu"></a-entity>
+                <a-entity template="src: #link3" data-src="#button" data-thumb="#subway"></a-entity>
+
+            </a-entity>
+            
+            
+
+ 
+            <!-- 스카이 -->
+            <a-sky id="mainpage" radius="1000" src="#main-panorama"
+               animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
+               animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade">
+            </a-sky>
+            <!-- 스카이 -->
+            
+            
+        </a-scene>
+    </body>
+</html>
