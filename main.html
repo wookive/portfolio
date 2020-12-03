@@ -1,130 +1,144 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Kim Seong Wook</title>
-        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-        <script src="js/aframe-master.js"></script>
-        <script src="js/unpkg-event-set.js"></script>
-        <script src="js/unpkg-layout.js"></script>
-        <script src="js/unpkg-template.js"></script>
-        <script src="js/unpkg-proxy-event.js"></script>
-        <script src="js/rawgit-cursor.js"></script>
-        <script src="js/unpkg-animation.js"></script>
-        <script src="js/AVideoPlayer.js"></script>
-        <script src="js/index.js"></script>
-        <script src="js/aframe-mouse-cursor-component.min.js"></script>
-        <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-    
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        <script id="link1" type="text/html">
-        <a-entity class="link"    
-        geometry="primitive: plane; height: 0.4; width: 2;"
-        material="shader: flat; src: ${thumb}; transparent: true; opacity: 0.3"
-        event-set__mouseenter="scale: 1 1 1"
-        event-set__mouseleave="scale: 1 1 1"
-        event-set__click="_target: #image-360; _delay: 1000; material.src: ${src}"
-        proxy-event="event: click; to: #image-360; as: fade"></a-entity>
-        </script>
-        
-        <script id="link2" type="text/html">
-        <a-entity class="link"    
-        geometry="primitive: plane; height: 5; width: 7;"
-        material="shader: flat; src: ${thumb}; transparent: true; opacity: 0.1"
-        event-set__mouseenter="scale: 1 1 1"
-        event-set__mouseleave="scale: 1 1 1"
-        event-set__click="_target: #image-360; _delay: 1000; material.src: ${src}"
-        proxy-event="event: click; to: #image-360; as: fade"></a-entity>
-        </script>
-        
-        <script id="link3" type="text/html">
-        <a-entity class="link"    
-        geometry="primitive: plane; height: 0.2; width: 0.2;"
-        material="shader: flat; src: ${thumb}; transparent: true; opacity: 0.99"
-        event-set__mouseenter="scale: 1 1 1"
-        event-set__mouseleave="scale: 1 1 1"
-        event-set__click="_target: #image-360; _delay: 1000; material.src: ${src}"
-        proxy-event="event: click; to: #image-360; as: fade"
-        sound="on: click; src: #click-sound1"></a-entity>
-        </script>
-        
-    </head>
-    
-    <body>
-        <a-scene>
-            <!-- 카메라/커서 -->
-            <a-entity position="-0.8 -1.6 -2.3">
-               <a-camera id="cam">
-                <a-cursor
-                  id="cursor"
-                  animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
-                  animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
-                  event-set__mouseenter="_event: mouseenter; color: white"
-                  event-set__mouseleave="_event: mouseleave; color: white"
-                  raycaster="objects: .link"></a-cursor>
-               </a-camera>
-            </a-entity>
-            <!-- 카메라/커서 -->
-           
-            <a-assets>
-                <img id="main-panorama" src="img/main1.png">
-                
-                <img id="pannel" crossorigin="anonymous" img src="img/remote2.png">
-                <img id="pannel2" crossorigin="anonymous" img src="img/pannel2.png">
-                
-                <img id="about" crossorigin="anonymous" img src="img/about.png">
-                <img id="Minecraft" crossorigin="anonymous" img src="img/minecraft.png">
-                <img id="yollu" crossorigin="anonymous" img src="img/yollu.png">
-                <img id="adobe" crossorigin="anonymous" img src="img/adobe.png">
-                <img id="5tofu" crossorigin="anonymous" img src="img/5tofu.png">
-                <img id="subway" crossorigin="anonymous" img src="img/subway.png">
-                
-                <audio id="click-sound1" crossorigin="anonymous" src="Audio/action.wav"></audio>
+<html lang="ko">
+<head>
+  <title>KimSeongWook</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="HTML5 website template">
+  <meta name="keywords" content="global, template, html, sass, jquery">
+  <meta name="author" content="Bucky Maler">
+  <link rel="stylesheet" href="assets/css/main.css">
+  
+  
+  <style type="text/css">
+    body {
+        overflow: hidden;
+        }
+</style>
+</head>
+<body>
 
-            </a-assets>
-            
-            <a-entity id="links" position="-2.5 -1.1 -2.2" rotation="-20 90 0">
-            <a-entity template="src: #link1" data-src="#pannel" data-thumb="#pannel"></a-entity>
-            </a-entity>
-            
-            <a-entity id="links" position="-7 0 -1.95" rotation="-10 90 0">
-            <a-entity template="src: #link2" data-src="#pannel" data-thumb="#pannel2"></a-entity>
-            </a-entity>
+<div class="device-notification">
+  <a class="device-notification--logo">
+    <img src="assets/img/wook-logo.png" alt="Global">
+    <p>KimSeongWook</p>
+  </a>
+  <p class="device-notification--message">김성욱의 포트폴리오 사이트입니다. <br>1920x1080 해상도 환경에서 최적화 되어 있습니다.</p>
+</div>
 
-           <a-entity id="links" position="-3.7 0 3.9" rotation="-10 150 0">
-            <a-entity template="src: #link2" data-src="#pannel" data-thumb="#pannel2"></a-entity>
-            </a-entity>
-            
-            <a-entity id="links" layout="type: line; margin: 0.29" position="-2.35 -1 -1.5" rotation="-20 90 0">
-                <a-entity template="src: #link3" data-src="#button" data-thumb="#about"></a-entity>
-                <a-entity template="src: #link3" data-src="#button" data-thumb="#5tofu"></a-entity>
-                <a-entity template="src: #link3" data-src="#button" data-thumb="#adobe"></a-entity>
-                <a-entity template="src: #link3" data-src="#button" data-thumb="#Minecraft"></a-entity>
-                <a-entity template="src: #link3" data-src="#button" data-thumb="#yollu"></a-entity>
-                <a-entity template="src: #link3" data-src="#button" data-thumb="#subway"></a-entity>
+<div class="perspective effect-rotate-left">
+  <div class="container"><div class="outer-nav--return"></div>
+    <div id="viewport" class="l-viewport">
+      <div class="l-wrapper">
+        <header class="header">
+          <a class="header--logo" href="#0">
+            <img src="assets/img/wook-logo.png" alt="Global">
+          </a>
+          <div class="header--nav-toggle">
+            <span></span>
+          </div>
+        </header>
+        <nav class="l-side-nav">
+          <ul class="side-nav">
+            <li class="is-active"><span>Wook</span></li>
+            <li><span>Project</span></li>
+            <li><span>Contact</span></li>
+          </ul>
+        </nav>
+        <ul class="l-main-content main-content">
+          <li class="l-section section section--is-active">
+            <div class="intro">
+              <div class="intro--banner">
+                <h1>배움으로<br>도전하며<br>창조하는<br>김성욱 입니다.<br></h1>
+                <a href="assets/img/Resume.pdf" target="_blank"><button class="cta">Resume</button></a>
+                <img src="assets/img/wook.png" alt="Welcome">
+              </div>
+            </div>
+          </li>
+          <li class="l-section section">
+            <div class="work">
+              <h2>Project</h2>
+              <div class="work--lockup">
+                <ul class="slider">
+                  <li class="slider--item slider--item-left">
+                    <a href="https://youtu.be/-57Vmmt6rwQ" target="_blank">
+                      <div class="slider--item-image">
+                        <img src="assets/img/terra.PNG" alt="Victory">
+                      </div>
+                      <p class="slider--item-title">Terra Incognita</p>
+                      <p class="slider--item-description">세상에 알려지지 않은 나라를 주제로 시나리오를 진행하는 VR 게임 입니다. </p>
+                    </a>
+                  </li>
+                  <li class="slider--item slider--item-center">
+                    <a href="https://wookive.github.io/5TOFU/5TOFU_WEB/5TOFU.html" target="_blank">
+                      <div class="slider--item-image">
+                        <img src="assets/img/NDE.png" alt="Metiew and Smith">
+                      </div>
+                      <p class="slider--item-title">N.D.E</p>
+                      <p class="slider--item-description">가상의 사후세계를 체험하며 시나리오를 진행하는 VR 컨텐츠 입니다.</p>
+                    </a>
+                  </li>
+                  <li class="slider--item slider--item-right">
+                    <a href="#0">
+                      <div class="slider--item-image">
+                        <img src="assets/img/other.png" alt="Alex Nowak">
+                      </div>
+                      <p class="slider--item-title">Other</p>
+                      <p class="slider--item-description">　　<br>　　　</p>
+                    </a>
+                  </li>
+                  
+                  
+                  
+                  
+                </ul>
+                <div class="slider--prev">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                  viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+                  <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+                    <path d="M561,1169C525,1155,10,640,3,612c-3-13,1-36,8-52c8-15,134-145,281-289C527,41,562,10,590,10c22,0,41,9,61,29
+                    c55,55,49,64-163,278L296,510h575c564,0,576,0,597,20c46,43,37,109-18,137c-19,10-159,13-590,13l-565,1l182,180
+                    c101,99,187,188,193,199c16,30,12,57-12,84C631,1174,595,1183,561,1169z"/>
+                  </g>
+                  </svg>
+                </div>
+                <div class="slider--next">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
+                  <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+                    <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
+                  </g>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="l-section section">
+            <div class="contact">
+              <div class="contact--lockup">
+                <div class="modal">
+                  <div class="modal--information">
+                    <a href="">Kim Seong Wook</a><br>
+                    <a href="mailto:paulive@naver.com">paulive@naver.com</a>
+                    <a href="tel:01065435335">010-6543-5335</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <ul class="outer-nav">
+    <li class="is-active">Wook</li>
+    <li>Project</li>
+    <li>Contact</li>
+  </ul>
+</div>
 
-            </a-entity>
-            
-            
-
- 
-            <!-- 스카이 -->
-            <a-sky id="mainpage" radius="1000" src="#main-panorama"
-               animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
-               animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade">
-            </a-sky>
-            <!-- 스카이 -->
-            
-            
-        </a-scene>
-    </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
+<script src="assets/js/functions-min.js"></script>
+</body>
 </html>
